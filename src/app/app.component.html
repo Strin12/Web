@@ -1,0 +1,22 @@
+<app-header *ngIf="!dato"></app-header>
+<router-outlet *ngIf="!dato" ></router-outlet>
+
+<div class="wrapper" *ngIf="dato">
+    <div class="logo">
+        <img src="../assets/default.png" alt="">
+    </div>
+    <div class="text-center mt-4 name">
+        Bienvenido
+    </div>
+    <form class="p-3 mt-3" (ngSubmit)="login(form)" #form="ngForm">
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="email" name="email" [(ngModel)]="usuarios.email" id="userName" placeholder="Correo electrónico">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="password" name="password" [(ngModel)]="usuarios.password" id="pwd" placeholder="contraseña">
+        </div>
+        <button class="btn mt-3" type="submit">Iniciar sesión</button>
+    </form>
+</div>

@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="box">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Sistema de usuarios</h3>
+                      <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse">
+                          <i class="fa fa-minus"></i>
+                        </button>
+
+                        <button class="btn btn-box-tool" data-widget="remove">
+                          <i class="fa fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="box-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <table class="table table-bordered" *ngIf="!cargando && usuarios.length > 0 ">
+                            <thead class="bg-primary">
+                              <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Correo electrónico</th>
+                                <th scope="col">Avatar</th>
+                                <th scope="col">Opciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let usuarios of usuarios; let i = index">
+                                <td>{{i + 1}}</td>
+                                <td>{{usuarios.name}}</td>
+                                <td>{{usuarios.email}}</td>
+                                <td>
+                                  <div class="card" style="width: 4rem">
+                                    <img
+                                      class="w-100"
+                                      src="{{
+                                        'http://127.0.0.1:8000/images/' + usuarios.personas.avatar
+                                      }}"
+                                    />
+                                  </div>
+                                </td>
+                
+                                <td>
+                                  <a
+                                    data-target="#modal-delete-10"
+                                    data-toggle="modal"
+                                    ><button class="btn btn-danger" (click)="borrar(usuarios, i)">
+                                      Desactivar
+                                    </button></a
+                                  >
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div *ngIf="!cargando && usuarios.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn fast">
+                            <h4 class="alert-heading">No hay registros</h4>
+                            <p>
+                                <i class="fa fa-exclamation fa-2x"></i>
+                            </p>
+                        </div>
+                        
+                        <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn fast">
+                            <h4 class="alert-heading">Cargando</h4>
+                            <p>
+                                <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+                            </p>
+                            <p class="mb-0">
+                                Espere por favor
+                            </p>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
